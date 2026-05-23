@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+    <id>11111111113</id>
+</request>
+
+
+
+==========================================
+
+<?xml version="1.0" encoding="UTF-8"?>
+<request>
+    <number1>10</number1>
+    <number2>20</number2>
+</request>
