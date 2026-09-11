@@ -48,7 +48,7 @@ echo json_encode($response);
 
 // Function to fetch customer information based on cardNumber from a text file
 function getCustomerDataBycardNumber($cardNumber) {
-    $file = 'customer_data.txt';
+    $file = 'array_num.txt';
 
     if (file_exists($file)) {
         $lines = file($file, FILE_IGNORE_NEW_LINES);
