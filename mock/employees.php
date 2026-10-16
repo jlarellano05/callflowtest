@@ -14,10 +14,11 @@ $method = $_SERVER['REQUEST_METHOD'];
 $response = array();
 
 if ($method === 'GET') {
-    // Handle GET request using the configured primary key
+    // Retrieve the key value from query parameters if present
     $keyValue = $_GET[$primaryKey] ?? null;
     
     if ($keyValue) {
+        // Specific lookup if parameter is provided
         $record = getDataByKey($dataFile, $primaryKey, $keyValue);
         if ($record) {
             $response = $record;
@@ -25,7 +26,8 @@ if ($method === 'GET') {
             $response['error'] = ucfirst($primaryKey) . ' not found';
         }
     } else {
-        $response['error'] = "Parameter '{$primaryKey}' is missing in the request.";
+        // Return ALL records as a full JSON object if no parameter is given
+        $response = getAllData($dataFile, $primaryKey);
     }
 } elseif ($method === 'POST') {
     // Handle POST request
@@ -55,7 +57,7 @@ echo json_encode($response);
 // ==========================================
 
 /**
- * Fetch record information based on the dynamic primary key from a text file
+ * Fetch a single record based on the primary key
  */
 function getDataByKey($file, $primaryKey, $keyValue) {
     if (file_exists($file)) {
@@ -68,6 +70,23 @@ function getDataByKey($file, $primaryKey, $keyValue) {
         }
     }
     return null;
+}
+
+/**
+ * Fetch all records from the text file keyed by their primary ID
+ */
+function getAllData($file, $primaryKey) {
+    $records = array();
+    if (file_exists($file)) {
+        $lines = file($file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+        foreach ($lines as $line) {
+            $record = json_decode($line, true);
+            if ($record && isset($record[$primaryKey])) {
+                $records[$record[$primaryKey]] = $record;
+            }
+        }
+    }
+    return $records;
 }
 
 /**
