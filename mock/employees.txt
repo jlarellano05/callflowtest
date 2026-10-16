@@ -1,0 +1,3 @@
+{"employee_id": "EMP1001", "first_name": "Pards", "last_name": "Saludo", "full_name": "Pards Saludo", "email": "jbsaludo@trends.com.ph", "department": "Finance", "region": "APAC", "account_status": "LOCKED", "data_source": "SIMULATED"}
+{"employee_id": "EMP1002", "first_name": "Maria", "last_name": "Reyes", "full_name": "Maria Reyes", "email": "maria.reyes@example.com", "department": "Human Resources", "region": "EMEA", "account_status": "ACTIVE", "data_source": "SIMULATED"}
+{"employee_id": "EMP1003", "first_name": "Daniel", "last_name": "Cruz", "full_name": "Daniel Cruz", "email": "daniel.cruz@example.com", "department": "Technology", "region": "AMER", "account_status": "ACTIVE", "data_source": "SIMULATED"}
